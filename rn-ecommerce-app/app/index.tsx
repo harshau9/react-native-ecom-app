@@ -7,6 +7,9 @@ export default function HomeScreen() {
     <View>
       <FlatList
         data={products}
+        contentContainerClassName="gap-2"
+        columnWrapperClassName="gap-2"
+        numColumns={2}
         renderItem={({ item }) => <ProductListItem product={item}/>}
       />
     </View>
