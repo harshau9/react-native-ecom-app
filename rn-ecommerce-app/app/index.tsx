@@ -1,9 +1,14 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { FlatList, View } from "react-native";
 import products from "@/assets/products.json";
 import ProductListItem from "@/components/ProductListItem";
 import { useBreakpointValue } from "@/components/ui/utils/use-break-point-value";
+import { listProducts } from "@/api/products";
 export default function HomeScreen() {
+
+  useEffect(() =>{
+    listProducts();
+  },[])
   const numColumns = useBreakpointValue({
     default: 2,
     sm: 3,
