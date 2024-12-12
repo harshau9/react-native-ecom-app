@@ -1,0 +1,29 @@
+backend:
+    functions:
+        - entry: index.mjs
+          handler: handler
+          name: serverless
+          path: .
+          type: aws
+    language:
+        name: js
+    path: api
+    scripts:
+        deploy:
+            - npm install
+        local:
+            - npm install
+frontend:
+    environment:
+        REACT_APP_API_URL_SERVERLESS: ${{ backend.functions.serverless.url }}
+    path: rn-ecommerce-app
+    publish: build
+    scripts:
+        build:
+            - npm run build
+        deploy:
+            - npm install
+    subdomain: react-native-ecommerce-app
+name: react-native-ecommerce-app
+region: us-east-1
+yamlVersion: 2
