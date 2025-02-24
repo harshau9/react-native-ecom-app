@@ -1,49 +1,59 @@
-import React from "react";
-import { View, ScrollView, ActivityIndicator } from "react-native";
-import { Text } from "@/components/ui/text";
-import { Stack, useLocalSearchParams } from "expo-router";
-import { Image } from "@/components/ui/image";
-import { Card } from "@/components/ui/card";
-import { VStack } from "@/components/ui/vstack";
-import { Heading } from "@/components/ui/heading";
-import { Button, ButtonText } from "@/components/ui/button";
-import { Box } from "@/components/ui/box";
-import { useQuery } from "@tanstack/react-query";
-import { fetchProductById } from "@/api/products";
+import React from 'react';
+import { ActivityIndicator } from 'react-native';
+import { Text } from '@/components/ui/text';
+import { Stack, useLocalSearchParams } from 'expo-router';
+import { Image } from '@/components/ui/image';
+import { Card } from '@/components/ui/card';
+import { VStack } from '@/components/ui/vstack';
+import { Heading } from '@/components/ui/heading';
+import { Button, ButtonText } from '@/components/ui/button';
+import { Box } from '@/components/ui/box';
+import { useQuery } from '@tanstack/react-query';
+import { fetchProductById } from '@/api/products';
+import { useCart } from '@/store/cartStore';
+
+interface Product {
+  id: number;
+  name: string;
+  price: number;
+  description?: string;
+  image?: string;
+}
 
 export default function ProductDetailsScreen() {
   const { id } = useLocalSearchParams<{ id: string }>();
-  // const addProduct = useCart((state) => state.addProduct);
-  // const productId = Number(id); // Convert id to number if it's a string
-  // const product = products.find((p) => p.id === productId);
+  const addProduct = useCart((state) => state.addProduct);
+
   const {
     data: product,
     isLoading,
     error,
-  } = useQuery({
-    queryKey: ["products", id],
+  } = useQuery<Product>({
+    queryKey: ['product', id],
     queryFn: () => fetchProductById(Number(id)),
+    enabled: !!id, // Only run if `id` is truthy
   });
+
   const addToCart = () => {
-    // addProduct(product);
+    if (!product) return;
+    addProduct(product);
   };
 
   if (isLoading) {
     return <ActivityIndicator />;
   }
 
-  if (error) {
+  if (error || !product) {
     return <Text>Product not found!</Text>;
   }
 
   return (
-    <>
+    <Box className="flex-1 items-center p-3">
       <Stack.Screen options={{ title: product.name }} />
+
       <Card className="p-5 rounded-lg max-w-[960px] w-full flex-1">
         <Image
-          source={{
-            uri: product.image,
-          }}
+          source={{ uri: product.image }}
           className="mb-6 h-[240px] w-full rounded-md"
           alt={`${product.name} image`}
           resizeMode="contain"
@@ -53,9 +63,9 @@ export default function ProductDetailsScreen() {
         </Text>
         <VStack className="mb-6">
           <Heading size="md" className="mb-4">
-            Rs{product.price}
+            ${product.price}
           </Heading>
-          <Text size="sm">{product.description}</Text>
+          {product.description && <Text size="sm">{product.description}</Text>}
         </VStack>
         <Box className="flex-col sm:flex-row">
           <Button
@@ -74,6 +84,6 @@ export default function ProductDetailsScreen() {
           </Button>
         </Box>
       </Card>
-    </>
+    </Box>
   );
 }

@@ -1,25 +1,35 @@
-// import { useAuth } from '@/store/authStore';
+import { useAuth } from '@/store/authStore';
 
-// const API_URL = process.env.EXPO_PUBLIC_API_URL;
+const API_URL = process.env.EXPO_PUBLIC_API_URL;
 
-// export async function createOrder(items: any[]) {
-//   const token = useAuth.getState().token;
+interface OrderItem {
+  productId: number;
+  quantity: number;
+  price: number;
+}
 
-//   const res = await fetch(`${API_URL}/orders`, {
-//     method: 'POST',
-//     headers: {
-//       'Content-Type': 'application/json',
-//       Authorization: token,
-//     },
-//     body: JSON.stringify({ order: {}, items }),
-//   });
+export async function createOrder(items: OrderItem[]) {
+  const token = useAuth.getState().token;
 
-//   const data = await res.json();
+  if (!token) {
+    throw new Error('User not authenticated');
+  }
 
-//   if (!res.ok) {
-//     console.log(data);
-//     throw new Error('Error');
-//   }
+  const res = await fetch(`${API_URL}/orders`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: token,
+    },
+    body: JSON.stringify({ order: {}, items }),
+  });
 
-//   return data;
-// }
+  const data = await res.json();
+
+  if (!res.ok) {
+    console.log(data);
+    throw new Error('Error creating order');
+  }
+
+  return data;
+}
