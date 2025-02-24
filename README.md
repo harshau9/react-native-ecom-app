@@ -31,18 +31,16 @@ This project demonstrates best practices for managing state with Zustand, handli
 
 Here are some screenshots of the application:
 
-![Home Screen](./screenshots/home.png)
-![Product Details](./screenshots/product.png)
-![Cart](./screenshots/cart.png)
-![Order Success](./screenshots/order-success.png)
+#### Signup & Login
+![Signup](https://github.com/user-attachments/assets/c2a39cc1-06dd-49e7-baf2-8df469036a38)
+![Login](https://github.com/user-attachments/assets/7a82d53c-b4a4-4c65-bfd5-bec69eec086d)
 
-> _Note: Replace the image paths with your own screenshots located in the `screenshots` folder._
+#### Products
+![Products](https://github.com/user-attachments/assets/4be22e7a-5773-4187-8a55-2e4c1cd95b73)
 
-## Installation
+#### Product Details
+![Product Details](https://github.com/user-attachments/assets/e6d896c5-aabe-4ffb-a3af-00f26a3d0db6)
 
-1. **Clone the repository:**
-
-   ```bash
-   git clone https://github.com/yourusername/full-stack-ecomm-expo.git
-   cd full-stack-ecomm-expo
-
+#### Shopping Cart
+![Shopping Cart](https://github.com/user-attachments/assets/6e7e7103-49f5-44b3-b263-c20f35a37092)
+![Order Placed](https://github.com/user-attachments/assets/7efda7e6-6a5c-4d15-b3d7-048a3ec48328)
