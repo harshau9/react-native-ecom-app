@@ -29,18 +29,36 @@ This project demonstrates best practices for managing state with Zustand, handli
 
 ## Screenshots
 
-Here are some screenshots of the application:
+### Signup & Login
 
-#### Signup & Login
-![Signup](https://github.com/user-attachments/assets/c2a39cc1-06dd-49e7-baf2-8df469036a38)
-![Login](https://github.com/user-attachments/assets/7a82d53c-b4a4-4c65-bfd5-bec69eec086d)
+<table>
+  <tr>
+    <td>
+      <img src="https://github.com/user-attachments/assets/c2a39cc1-06dd-49e7-baf2-8df469036a38" width="370" height="740" alt="Signup" />
+    </td>
+    <td>
+      <img src="https://github.com/user-attachments/assets/7a82d53c-b4a4-4c65-bfd5-bec69eec086d" width="370" height="740" alt="Login" />
+    </td>
+  </tr>
+</table>
 
-#### Products
-![Products](https://github.com/user-attachments/assets/4be22e7a-5773-4187-8a55-2e4c1cd95b73)
+### Products
 
-#### Product Details
-![Product Details](https://github.com/user-attachments/assets/e6d896c5-aabe-4ffb-a3af-00f26a3d0db6)
+<img src="https://github.com/user-attachments/assets/4be22e7a-5773-4187-8a55-2e4c1cd95b73" width="370" height="740" alt="Products" />
 
-#### Shopping Cart
-![Shopping Cart](https://github.com/user-attachments/assets/6e7e7103-49f5-44b3-b263-c20f35a37092)
-![Order Placed](https://github.com/user-attachments/assets/7efda7e6-6a5c-4d15-b3d7-048a3ec48328)
+### Product Details
+
+<img src="https://github.com/user-attachments/assets/e6d896c5-aabe-4ffb-a3af-00f26a3d0db6" width="370" height="740" alt="Product Details" />
+
+### Shopping Cart & Order Placed
+
+<table>
+  <tr>
+    <td>
+      <img src="https://github.com/user-attachments/assets/6e7e7103-49f5-44b3-b263-c20f35a37092" width="370" height="740" alt="Shopping Cart" />
+    </td>
+    <td>
+      <img src="https://github.com/user-attachments/assets/7efda7e6-6a5c-4d15-b3d7-048a3ec48328" width="370" height="740" alt="Order Placed" />
+    </td>
+  </tr>
+</table>
